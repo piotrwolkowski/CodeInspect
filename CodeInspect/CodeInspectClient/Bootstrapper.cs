@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Prism.Modularity;
+﻿using InvestigateCodeUI.ModuleDefinitions;
+using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
 using System;
 using System.Collections.Generic;
@@ -26,8 +27,17 @@ namespace CodeInspectClient
 
         protected override IModuleCatalog CreateModuleCatalog()
         {
-            return base.CreateModuleCatalog();
+            //return base.CreateModuleCatalog();
 
+            //Uri catalogUri = new Uri("catalog.xaml", UriKind.Relative);
+            //IModuleCatalog moduleCatalog = Microsoft.Practices.Prism.Modularity.ModuleCatalog.CreateFromXaml(catalogUri);
+
+            IModuleCatalog moduleCatalog = new ModuleCatalog();
+
+            Type investigateCodeModule = typeof(InvestigateCodeModule);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = investigateCodeModule.Name, ModuleType = investigateCodeModule.AssemblyQualifiedName });
+
+            return moduleCatalog;
             //return Microsoft.Practices.Prism.Modularity.ModuleCatalog.CreateFromXaml(
             //    new Uri("catalog.xaml", UriKind.Relative));
         }

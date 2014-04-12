@@ -121,13 +121,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="catalog.xaml">
-      <SubType>Designer</SubType>
-    </Content>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvestigateCodeUI\InvestigateCodeUI.csproj">
+      <Project>{5950ee29-9840-455a-855b-2b0904bedb3a}</Project>
+      <Name>InvestigateCodeUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
