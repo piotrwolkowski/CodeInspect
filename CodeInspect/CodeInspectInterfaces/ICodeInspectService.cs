@@ -1,4 +1,5 @@
 ﻿using CodeInspectEntities;
+using CodeInspectEntities.CompositeEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace CodeInspectInterfaces
 {
     public interface ICodeInspectService
     {
-        Report CreateReport(string projectPath, CancellationToken cancellationToken, IProgress<string> progress);
+        event EventHandler<ReportCreatedEventArgs> ReportCreated;
+
+        void CreateReport(string projectPath, CancellationToken cancellationToken, IProgress<string> progress);
 
         bool SaveAsXml(string saveLocation);
 

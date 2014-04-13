@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CodeInspectSettings.ModuleDefinitions
 {
-    class SettingsModule : IModule
+    public class SettingsModule : IModule
     {
         IUnityContainer container;
         public SettingsModule(IUnityContainer container)

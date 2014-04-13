@@ -127,9 +127,21 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeInspectService\CodeInspectService.csproj">
+      <Project>{76a6cd6c-6c07-42b8-90e5-d1298dc8b4e0}</Project>
+      <Name>CodeInspectService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeInspectSettings\CodeInspectSettings.csproj">
+      <Project>{efa26c75-dad3-40b5-91af-f94e6bd1e22e}</Project>
+      <Name>CodeInspectSettings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InvestigateCodeUI\InvestigateCodeUI.csproj">
       <Project>{5950ee29-9840-455a-855b-2b0904bedb3a}</Project>
       <Name>InvestigateCodeUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IssueListUI\IssueListUI.csproj">
+      <Project>{0c67895e-ed35-441e-a3dc-fecfb7e6b305}</Project>
+      <Name>IssueListUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

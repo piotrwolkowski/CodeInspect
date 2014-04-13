@@ -1,8 +1,12 @@
-﻿using InvestigateCodeUI.ModuleDefinitions;
+﻿using CodeInspectService.ModuleDefinitions;
+using CodeInspectSettings.ModuleDefinitions;
+using InvestigateCodeUI.ModuleDefinitions;
+using IssueListUI.ModuleDefinitions;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,19 +31,21 @@ namespace CodeInspectClient
 
         protected override IModuleCatalog CreateModuleCatalog()
         {
-            //return base.CreateModuleCatalog();
-
-            //Uri catalogUri = new Uri("catalog.xaml", UriKind.Relative);
-            //IModuleCatalog moduleCatalog = Microsoft.Practices.Prism.Modularity.ModuleCatalog.CreateFromXaml(catalogUri);
-
             IModuleCatalog moduleCatalog = new ModuleCatalog();
 
+            Type settingsModule = typeof(SettingsModule);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = settingsModule.Name, ModuleType = settingsModule.AssemblyQualifiedName });
+
+            Type codeInspectModule = typeof(CodeInspectModule);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = codeInspectModule.Name, ModuleType = codeInspectModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { settingsModule.Name } });
+
             Type investigateCodeModule = typeof(InvestigateCodeModule);
-            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = investigateCodeModule.Name, ModuleType = investigateCodeModule.AssemblyQualifiedName });
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = investigateCodeModule.Name, ModuleType = investigateCodeModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { codeInspectModule.Name } });
+
+            Type issueListModule = typeof(IssueListModule);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = issueListModule.Name, ModuleType = issueListModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { investigateCodeModule.Name } });
 
             return moduleCatalog;
-            //return Microsoft.Practices.Prism.Modularity.ModuleCatalog.CreateFromXaml(
-            //    new Uri("catalog.xaml", UriKind.Relative));
         }
     }
 }

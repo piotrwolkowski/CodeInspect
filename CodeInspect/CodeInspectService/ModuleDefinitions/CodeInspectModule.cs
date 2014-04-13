@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CodeInspectService.ModuleDefinitions
 {
-    class CodeInspectModule : IModule
+    public class CodeInspectModule : IModule
     {
         IUnityContainer container;
 

@@ -11,7 +11,7 @@ namespace CodeInspectSettings
     {
         public string InspectCodePath
         {
-            get { throw new NotImplementedException(); }
+            get { return @"C:\Program Files (x86)\JetBrains\jb-commandline-8.1.23.523\inspectcode.exe"; }
         }
 
         public bool SolutionWideAnalysis

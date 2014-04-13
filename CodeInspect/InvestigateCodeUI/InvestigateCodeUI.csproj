@@ -109,6 +109,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeInspectEntities\CodeInspectEntities.csproj">
+      <Project>{49cdd83f-7d58-48d7-95ee-ca9a1897964f}</Project>
+      <Name>CodeInspectEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeInspectInterfaces\CodeInspectInterfaces.csproj">
+      <Project>{13b875d3-8f01-47ad-a9d1-ecc852b25d53}</Project>
+      <Name>CodeInspectInterfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{66f82627-6641-4633-9b04-a2cbf9fa1bf7}</Project>
       <Name>Utilities</Name>

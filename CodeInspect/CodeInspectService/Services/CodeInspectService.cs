@@ -1,5 +1,7 @@
 ﻿using CodeInspectEntities;
+using CodeInspectEntities.CompositeEvents;
 using CodeInspectInterfaces;
+using Microsoft.Practices.Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +11,26 @@ using System.Threading.Tasks;
 
 namespace CodeInspectService.Services
 {
-    class CodeInspectService : ICodeInspectService
+    public class CodeInspectService : ICodeInspectService
     {
+        Report report;
+
+        public event EventHandler<ReportCreatedEventArgs> ReportCreated;
+
         ICodeInspectSettings settings;
 
-        public CodeInspectService(ICodeInspectSettings settings)
+        IEventAggregator eventAggregator;
+
+        public CodeInspectService(ICodeInspectSettings settings, IEventAggregator eventAggregator)
         {
             this.settings = settings;
+            this.eventAggregator = eventAggregator;
         }
 
-        public Report CreateReport(string projectPath, CancellationToken cancellationToken, IProgress<string> progress)
+        public async void CreateReport(string projectPath, CancellationToken cancellationToken, IProgress<string> progress)
         {
-            return InspectProject.CreateReport(projectPath, cancellationToken, progress, this.settings);
+            this.report = await InspectProject.CreateReport(projectPath, cancellationToken, progress, this.settings);
+            OnReportCreated(this.report);
         }
 
         public bool SaveAsXml(string saveLocation)
@@ -41,6 +51,12 @@ namespace CodeInspectService.Services
         public List<KeyValuePair<string, decimal>> GetIssueFileStats()
         {
             throw new NotImplementedException();
+        }
+
+        private void OnReportCreated(Report report)
+        {
+            ReportCreatedEvent reportCreatedEvent = eventAggregator.GetEvent<ReportCreatedEvent>();
+            reportCreatedEvent.Publish(report);
         }
     }
 }
