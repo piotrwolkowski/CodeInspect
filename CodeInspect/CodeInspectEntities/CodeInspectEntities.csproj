@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositeEvents\ReportCreatedEvent.cs" />
+    <Compile Include="CompositeEvents\SelectedIssueChangedEvent.cs" />
     <Compile Include="Issue.cs" />
     <Compile Include="IssueType.cs" />
+    <Compile Include="IssueWithDescription.cs" />
     <Compile Include="ProjectIssues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />

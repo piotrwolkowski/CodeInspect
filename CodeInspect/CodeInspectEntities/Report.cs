@@ -17,8 +17,35 @@ namespace CodeInspectEntities
         [XmlArrayItem("IssueType", typeof(IssueType))]
         public List<IssueType> IssueTypes { get; set; }
 
+
+        private List<ProjectIssues> projectIssues;
         [XmlArrayAttribute("Issues")]
         [XmlArrayItemAttribute("Project", typeof(ProjectIssues))]
-        public List<ProjectIssues> ProjectIssues { get; set; }
+        public List<ProjectIssues> ProjectIssues
+        {
+            get
+            {
+                return this.projectIssues;
+            }
+
+            set
+            {
+                this.projectIssues = value;
+                //AllIssues = new List<IssueWithDescription>(this.projectIssues
+                //    .SelectMany(p => p.Issues
+                //        .Select(i =>
+                //            {
+                //                return new IssueWithDescription
+                //                (
+                //                    i,
+                //                    IssueTypes.Single(it => it.Id == i.TypeId),
+                //                    Information
+                //                );
+                //            })));
+            }
+        }
+
+        [XmlIgnore]
+        public List<IssueWithDescription> AllIssues { get; set; }
     }
 }

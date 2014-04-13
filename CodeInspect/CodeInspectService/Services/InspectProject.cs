@@ -195,10 +195,26 @@ namespace CodeInspectService.Services
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Report));
                     result = (Report)serializer.Deserialize(reader);
+                    result.AllIssues = new List<IssueWithDescription>(AllIssuesWithDescription(result));
                     reader.Close();
                 }
             }
             return result;
+        }
+
+        private static IEnumerable<IssueWithDescription> AllIssuesWithDescription(Report report)
+        {
+            return report.ProjectIssues
+                    .SelectMany(p => p.Issues
+                        .Select(i =>
+                            {
+                                return new IssueWithDescription
+                                (
+                                    i,
+                                    report.IssueTypes.Single(it => it.Id == i.TypeId),
+                                    report.Information
+                                );
+                            }));
         }
     }
 }

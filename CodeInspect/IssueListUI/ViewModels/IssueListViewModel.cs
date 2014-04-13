@@ -14,8 +14,8 @@ namespace IssueListUI.ViewModels
     public class IssueListViewModel : NotifyPropertyChangedImplementation
     {
 
-        private ObservableCollection<ProjectIssues> projectIssues;
-        public ObservableCollection<ProjectIssues> ProjectIssues
+        private ObservableCollection<IssueWithDescription> projectIssues;
+        public ObservableCollection<IssueWithDescription> ProjectIssues
         {
             get
             {
@@ -40,7 +40,7 @@ namespace IssueListUI.ViewModels
 
         private void OnReportCreated(Report report)
         {
-            this.ProjectIssues = new ObservableCollection<ProjectIssues>(report.ProjectIssues);
+            this.ProjectIssues = new ObservableCollection<IssueWithDescription>(report.AllIssues);
         }
     }
 }

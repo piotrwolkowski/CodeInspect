@@ -24,7 +24,6 @@ namespace IssueListUI.Views
         public IssueListView(IssueListViewModel viewModel)
         {
             InitializeComponent();
-
             this.Loaded += (s, e) =>
                 {
                     this.DataContext = viewModel;
