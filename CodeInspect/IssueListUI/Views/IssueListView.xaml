@@ -23,7 +23,7 @@
         <TreeView
             Grid.Row="2"
             ItemsSource="{Binding ProjectIssues}"
-            cmd:TreeViewSelect.Command="{Binding SelectChangedCommand}"
+            cmd:TreeViewSelect.Command="{Binding SelectionChangedCommand}"
             cmd:TreeViewSelect.CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem}"
             />
         

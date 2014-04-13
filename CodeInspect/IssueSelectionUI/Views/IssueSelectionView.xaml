@@ -24,7 +24,9 @@
             TextWrapping="Wrap" 
             VerticalAlignment="Stretch" 
             VerticalScrollBarVisibility="Auto"
-            IsReadOnly="True" />
+            IsReadOnly="True"
+            Text="{Binding SelectedIssue.Issue.Message}"
+            />
 
         <RichTextBox 
             Grid.Row="1"

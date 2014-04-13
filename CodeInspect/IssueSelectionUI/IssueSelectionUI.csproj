@@ -102,6 +102,16 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeInspectEntities\CodeInspectEntities.csproj">
+      <Project>{49cdd83f-7d58-48d7-95ee-ca9a1897964f}</Project>
+      <Name>CodeInspectEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{66f82627-6641-4633-9b04-a2cbf9fa1bf7}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
