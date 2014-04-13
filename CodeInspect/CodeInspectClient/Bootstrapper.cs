@@ -2,6 +2,7 @@
 using CodeInspectSettings.ModuleDefinitions;
 using InvestigateCodeUI.ModuleDefinitions;
 using IssueListUI.ModuleDefinitions;
+using IssueSelectionUI.ModuleDefinitions;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
 using System;
@@ -44,6 +45,9 @@ namespace CodeInspectClient
 
             Type issueListModule = typeof(IssueListModule);
             moduleCatalog.AddModule(new ModuleInfo() { ModuleName = issueListModule.Name, ModuleType = issueListModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { investigateCodeModule.Name } });
+
+            Type issueSelectionModule = typeof(IssueSelectionModule);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = issueSelectionModule.Name, ModuleType = issueSelectionModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { issueListModule.Name } });
 
             return moduleCatalog;
         }

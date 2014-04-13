@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CodeInspectEntities.CompositeEvents
 {
-    class SelectedIssueChangedEvent : CompositePresentationEvent<Issue>
+    public class SelectedIssueChangedEvent : CompositePresentationEvent<IssueWithDescription>
     {
         
     }
 
     public class SelectedIssueChangedEventArgs : EventArgs
     {
-        public Issue Issue { get; set; }
+        public IssueWithDescription IssueWithDescription { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace CodeInspectEntities.CompositeEvents
 {
     public class ReportCreatedEvent : CompositePresentationEvent<Report>
     {
+
     }
 
     public class ReportCreatedEventArgs : EventArgs
