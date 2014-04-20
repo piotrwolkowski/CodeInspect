@@ -35,7 +35,8 @@ namespace CodeInspectService.Services
                     return CreateReportFromProject(
                             codeInspectSettings.InspectCodePath,
                             projectPath,
-                            Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), DateTime.Now.Ticks + ".xml"));
+                            Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), DateTime.Now.Ticks + ".xml"),
+                            progress: progress);
                 }
             }
             catch (Exception ex)

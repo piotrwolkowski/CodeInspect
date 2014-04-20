@@ -58,6 +58,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\TextBoxMouseDown.cs" />
+    <Compile Include="Commands\TextBoxMouseDownCommandBehavior.cs" />
     <Compile Include="Commands\TreeViewSelect.cs" />
     <Compile Include="Commands\TreeViewSelectionChangedCommandBehavior.cs" />
     <Compile Include="NotifyPropertyChangedImplementation.cs" />

@@ -11,9 +11,9 @@ namespace CodeInspectInterfaces
 {
     public interface ICodeInspectService
     {
-        event EventHandler<ReportCreatedEventArgs> ReportCreated;
+        //event EventHandler<ReportCreatedEventArgs> ReportCreated;
 
-        void CreateReport(string projectPath, CancellationToken cancellationToken, IProgress<string> progress);
+        void CreateReport(string projectPath, CancellationToken cancellationToken);
 
         bool SaveAsXml(string saveLocation);
 

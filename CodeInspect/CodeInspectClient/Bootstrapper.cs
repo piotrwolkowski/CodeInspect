@@ -1,5 +1,6 @@
 ﻿using CodeInspectService.ModuleDefinitions;
 using CodeInspectSettings.ModuleDefinitions;
+using CommandUI.ModuleDefinitions;
 using InvestigateCodeUI.ModuleDefinitions;
 using IssueListUI.ModuleDefinitions;
 using IssueSelectionUI.ModuleDefinitions;
@@ -48,6 +49,9 @@ namespace CodeInspectClient
 
             Type issueSelectionModule = typeof(IssueSelectionModule);
             moduleCatalog.AddModule(new ModuleInfo() { ModuleName = issueSelectionModule.Name, ModuleType = issueSelectionModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { issueListModule.Name } });
+
+            Type commandModule = typeof(CommandModule);
+            moduleCatalog.AddModule(new ModuleInfo() { ModuleName = commandModule.Name, ModuleType = commandModule.AssemblyQualifiedName, DependsOn = new Collection<string>() { codeInspectModule.Name } });
 
             return moduleCatalog;
         }

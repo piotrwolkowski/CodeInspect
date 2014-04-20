@@ -135,6 +135,10 @@
       <Project>{efa26c75-dad3-40b5-91af-f94e6bd1e22e}</Project>
       <Name>CodeInspectSettings</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CommandUI\CommandUI.csproj">
+      <Project>{ecc0d195-b49a-452b-b5a1-4ed612ed5643}</Project>
+      <Name>CommandUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InvestigateCodeUI\InvestigateCodeUI.csproj">
       <Project>{5950ee29-9840-455a-855b-2b0904bedb3a}</Project>
       <Name>InvestigateCodeUI</Name>

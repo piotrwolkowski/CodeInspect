@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cmd="clr-namespace:Utilities.Commands;assembly=Utilities"
              mc:Ignorable="d" >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,7 +14,7 @@
         <Button
             Grid.Column="0"
             Margin="5"
-            Content="Get Issues"
+            Content="{Binding GetIssuesButtonText}"
             Command="{Binding GetIssuesCommand}"
             />
         
@@ -22,7 +23,11 @@
             Margin="5"
             VerticalContentAlignment="Center"
             HorizontalContentAlignment="Left"
-            Text="{Binding ProjectToInvestigatePath}"/>
-        
+            
+            Text="{Binding ProjectToInvestigatePath}">
+            <TextBox.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding GetProjectPathCommand}"/>
+            </TextBox.InputBindings>
+        </TextBox>
     </Grid>
 </UserControl>
