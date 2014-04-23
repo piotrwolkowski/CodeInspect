@@ -6,6 +6,19 @@
              xmlns:cmd="clr-namespace:Utilities.Commands;assembly=Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <!--<HierarchicalDataTemplate x:Key="level1">
+            <HierarchicalDataTemplate.ItemsSource>
+                <MultiBinding>
+                    <Binding Path="IssueType.Description" />
+                    <Binding Path="IssueType.Severity" />
+                    <Binding Path="Issue.File" />
+                </MultiBinding>
+            </HierarchicalDataTemplate.ItemsSource>
+            
+        </HierarchicalDataTemplate>-->
+        
+    </UserControl.Resources>
     <Grid
         Margin="5">
         <Grid.RowDefinitions>
@@ -22,10 +35,13 @@
         
         <TreeView
             Grid.Row="2"
+            ItemTemplate="{StaticResource level1}"
             ItemsSource="{Binding ProjectIssues}"
             cmd:TreeViewSelect.Command="{Binding SelectionChangedCommand}"
             cmd:TreeViewSelect.CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem}"
-            />
+            >
+            
+        </TreeView>
         
     </Grid>
 </UserControl>

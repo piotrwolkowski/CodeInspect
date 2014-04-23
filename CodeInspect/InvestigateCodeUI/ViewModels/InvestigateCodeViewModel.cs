@@ -91,7 +91,11 @@ namespace InvestigateCodeUI.ViewModels
             {
                 if (this.getIssuesCommand == null)
                 {
-                    this.getIssuesCommand = new DelegateCommand(this.GetIssues);
+                    this.getIssuesCommand = new DelegateCommand
+                        (
+                            this.GetIssues,
+                            () => { return !string.IsNullOrWhiteSpace(this.projectToInvestigatePath); }
+                        );
                 }
                 return this.getIssuesCommand;
             }
@@ -112,6 +116,8 @@ namespace InvestigateCodeUI.ViewModels
             {
                 this.projectToInvestigatePath = value;
                 this.OnPropertyChanged();
+
+                ((DelegateCommand)this.GetIssuesCommand).RaiseCanExecuteChanged();
             }
         }
 

@@ -8,6 +8,7 @@
             <TextBox Text="{Binding ProgressMessage}"
                      Background="Transparent"
                      BorderBrush="Transparent"
+                     IsReadOnly="True"
                      VerticalContentAlignment="Center"/>
         </StackPanel>
     </Grid>
