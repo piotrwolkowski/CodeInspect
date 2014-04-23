@@ -9,7 +9,7 @@
     <UserControl.Resources>
         <CollectionViewSource x:Key="dataSource" Source="{Binding ProjectIssues}">
             <CollectionViewSource.GroupDescriptions>
-                <PropertyGroupDescription PropertyName="Issue.File"/>
+                <PropertyGroupDescription PropertyName="Issue.File"/> <!-- bind to the drop down list-->
             </CollectionViewSource.GroupDescriptions>
         </CollectionViewSource>
         <DataTemplate x:Key="level0">
@@ -20,22 +20,6 @@
                                   ItemTemplate="{StaticResource level0}">
             <TextBlock Text="{Binding Path=Name}"/>
         </HierarchicalDataTemplate>
-        <!--<HierarchicalDataTemplate x:Key="level1"
-                                  ItemsSource="{Binding Path=Items}"
-                                  ItemTemplate="{StaticResource level2}">
-            <TextBlock Text="{Binding Path=IssueType.Severity}"/>
-        </HierarchicalDataTemplate>-->
-        <!--
-        
-        <HierarchicalDataTemplate x:Key="level2"
-                                  ItemTemplate="{StaticResource level3}">
-            <TextBlock Text="{Binding Path=IssueType.Severity}"/>
-        </HierarchicalDataTemplate>
-        
-        <HierarchicalDataTemplate x:Key="level3">
-            <TextBlock Text="{Binding Path=IssueType.Category}"/>
-        </HierarchicalDataTemplate>
-        -->
     </UserControl.Resources>
     <Grid
         Margin="5">
@@ -51,12 +35,14 @@
         <TextBox
             Grid.Row="1"/>
         
+        <!-- fix command so it only applies to the leaf node -->
         <TreeView
             Grid.Row="2"
             ItemTemplate="{StaticResource level1}"
             ItemsSource="{Binding Source={StaticResource dataSource}, Path=Groups}"
             >
         </TreeView>
+        
         <!--<TreeView
             Grid.Row="2"
             ItemTemplate="{StaticResource level1}"
