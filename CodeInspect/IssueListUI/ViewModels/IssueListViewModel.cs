@@ -65,7 +65,7 @@ namespace IssueListUI.ViewModels
             // populate differently structured collections.
             // each collection will be a source for different treeview hierarchy
             this.ProjectIssues = new ObservableCollection<IssueWithDescription>(report.AllIssues);
-            
+            //this.ProjectIssues.First().IssueType.Category
         }
     }
 }
@@ -73,3 +73,6 @@ namespace IssueListUI.ViewModels
 // Multilevel treeview with data templates:
 // http://www.codemag.com/Article/1401031
 // http://www.codeproject.com/Articles/36451/Organizing-Heterogeneous-Data-on-a-WPF-TreeView.aspx
+
+// Hierarchical tree from flat data:
+// http://www.zagstudio.com/blog/365#.UdRm2_lJM1I

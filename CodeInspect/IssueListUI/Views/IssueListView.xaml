@@ -7,17 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <!--<HierarchicalDataTemplate x:Key="level1">
-            <HierarchicalDataTemplate.ItemsSource>
-                <MultiBinding>
-                    <Binding Path="IssueType.Description" />
-                    <Binding Path="IssueType.Severity" />
-                    <Binding Path="Issue.File" />
-                </MultiBinding>
-            </HierarchicalDataTemplate.ItemsSource>
-            
-        </HierarchicalDataTemplate>-->
+        <DataTemplate x:Key="leafLevel">
+            <TextBlock Text="{Binding Path=IssueType.Category}"/>
+        </DataTemplate>
+        <HierarchicalDataTemplate x:Key="level2"
+                                  ItemsSource="{Binding Path=Items}"
+                                  ItemTemplate="{StaticResource leafLevel}">
+            <TextBlock Text="{Binding Path=Issue.File}"/>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate x:Key="level1"
+                                  ItemsSource="{Binding Path=Items}"
+                                  ItemTemplate="{StaticResource level2}">
+            <TextBlock Text="{Binding Path=IssueType.Severity}"/>
+        </HierarchicalDataTemplate>
+        <!--
         
+        <HierarchicalDataTemplate x:Key="level2"
+                                  ItemTemplate="{StaticResource level3}">
+            <TextBlock Text="{Binding Path=IssueType.Severity}"/>
+        </HierarchicalDataTemplate>
+        
+        <HierarchicalDataTemplate x:Key="level3">
+            <TextBlock Text="{Binding Path=IssueType.Category}"/>
+        </HierarchicalDataTemplate>
+        -->
+        <CollectionViewSource x:Key="level0" Source="{Binding ProjectIssues}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Issue.File"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
     </UserControl.Resources>
     <Grid
         Margin="5">
@@ -36,12 +54,16 @@
         <TreeView
             Grid.Row="2"
             ItemTemplate="{StaticResource level1}"
+            ItemsSource="{Binding Source={StaticResource level0}, Path=Groups}"
+            >
+        </TreeView>
+        <!--<TreeView
+            Grid.Row="2"
+            ItemTemplate="{StaticResource level1}"
             ItemsSource="{Binding ProjectIssues}"
             cmd:TreeViewSelect.Command="{Binding SelectionChangedCommand}"
             cmd:TreeViewSelect.CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem}"
             >
-            
-        </TreeView>
-        
+        </TreeView>-->
     </Grid>
 </UserControl>
