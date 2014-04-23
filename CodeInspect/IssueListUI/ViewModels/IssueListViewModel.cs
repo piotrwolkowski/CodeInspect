@@ -65,7 +65,6 @@ namespace IssueListUI.ViewModels
             // populate differently structured collections.
             // each collection will be a source for different treeview hierarchy
             this.ProjectIssues = new ObservableCollection<IssueWithDescription>(report.AllIssues);
-            //this.ProjectIssues.First().IssueType.Category
         }
     }
 }
