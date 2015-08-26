@@ -15,6 +15,12 @@ namespace IssueListUI.ViewModels
 {
     public class IssueListViewModel : NotifyPropertyChangedImplementation
     {
+        private enum IssueGroups
+        {
+            File,
+            Category,
+            Severity,
+        }
         IEventAggregator eventAggregator;
 
         ICommand selectionChangedCommand;
@@ -73,5 +79,5 @@ namespace IssueListUI.ViewModels
 // http://www.codemag.com/Article/1401031
 // http://www.codeproject.com/Articles/36451/Organizing-Heterogeneous-Data-on-a-WPF-TreeView.aspx
 
-// Hierarchical tree from flat data:
+// ! Hierarchical tree from flat data:
 // http://www.zagstudio.com/blog/365#.UdRm2_lJM1I
